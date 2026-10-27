@@ -1,0 +1,81 @@
+import { SkillCategory } from "@/types";
+
+export const skillCategories: SkillCategory[] = [
+  {
+    id: "languages",
+    number: "01",
+    name: "Languages",
+    description: "Core programming languages for web, systems, and algorithms.",
+    skills: [
+      { name: "TypeScript", highlight: true },
+      { name: "JavaScript (ES6+)", highlight: true },
+      { name: "Python", highlight: false },
+      { name: "Go", highlight: false },
+      { name: "C++", highlight: false },
+      { name: "SQL", highlight: true },
+      { name: "HTML5 / CSS3", highlight: false },
+    ],
+  },
+  {
+    id: "frontend",
+    number: "02",
+    name: "Frontend",
+    description: "Modern frameworks and UI libraries for creating responsive, immersive applications.",
+    skills: [
+      { name: "Next.js (App Router)", highlight: true },
+      { name: "React 19 / 18", highlight: true },
+      { name: "Tailwind CSS", highlight: true },
+      { name: "Framer Motion", highlight: true },
+      { name: "Redux Toolkit / Zustand", highlight: false },
+      { name: "Radix UI & Shadcn", highlight: false },
+      { name: "Responsive Web Design", highlight: false },
+    ],
+  },
+  {
+    id: "backend",
+    number: "03",
+    name: "Backend",
+    description: "Server-side architectures, real-time protocols, and API development.",
+    skills: [
+      { name: "Node.js", highlight: true },
+      { name: "Express.js", highlight: false },
+      { name: "NestJS", highlight: false },
+      { name: "RESTful APIs", highlight: true },
+      { name: "GraphQL", highlight: false },
+      { name: "tRPC", highlight: true },
+      { name: "WebSockets & WebRTC", highlight: false },
+    ],
+  },
+  {
+    id: "database-cloud",
+    number: "04",
+    name: "Database & Cloud",
+    description: "Persistent storage, fast caching, serverless runtimes, and hosting platforms.",
+    skills: [
+      { name: "PostgreSQL", highlight: true },
+      { name: "MongoDB", highlight: false },
+      { name: "Redis", highlight: true },
+      { name: "Prisma ORM", highlight: true },
+      { name: "Docker", highlight: true },
+      { name: "AWS (S3, EC2, Lambda)", highlight: false },
+      { name: "Vercel & Edge Runtime", highlight: true },
+      { name: "Supabase & Firebase", highlight: false },
+    ],
+  },
+  {
+    id: "tools",
+    number: "05",
+    name: "Tools & DevOps",
+    description: "Development toolchains, CI/CD, testing, and system utilities.",
+    skills: [
+      { name: "Git & GitHub", highlight: true },
+      { name: "GitHub Actions CI/CD", highlight: true },
+      { name: "Linux / Bash", highlight: false },
+      { name: "Postman", highlight: false },
+      { name: "Jest / Playwright", highlight: false },
+      { name: "Figma", highlight: false },
+      { name: "VS Code", highlight: false },
+    ],
+  },
+];
+
