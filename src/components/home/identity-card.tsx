@@ -21,14 +21,14 @@ export function IdentityCard() {
   };
 
   const techChips = [
-    "Next.js 15",
-    "TypeScript",
-    "React 19",
+    "React",
+    "Next.js",
+    "Python",
+    "TensorFlow",
     "Node.js",
-    "PostgreSQL",
-    "Redis",
-    "Docker",
+    "MongoDB",
     "Tailwind CSS",
+    "JavaScript",
   ];
 
   return (
@@ -48,27 +48,32 @@ export function IdentityCard() {
             </h2>
           </div>
           <p className="mt-2 md:mt-0 text-xs sm:text-sm font-mono text-slate-400 max-w-sm">
-            Interactive dual-sided credentials. Click, tap, or press Enter on the card to flip between front credentials and system telemetry.
+            Click or tap the card to flip between front credentials and details.
           </p>
         </div>
 
         {/* 3D Flip Card Container */}
         <div className="flex justify-center items-center">
           <div
-            className="w-full max-w-md h-[540px] cursor-pointer perspective-1000 select-none group"
+            className="w-full max-w-md h-[540px] cursor-pointer select-none group"
+            style={{ perspective: "1000px" }}
             onClick={handleFlip}
             onKeyDown={handleKeyDown}
             role="button"
             tabIndex={0}
             aria-label="Developer identity card, click to flip"
           >
-            <motion.div
-              className="relative w-full h-full preserve-3d transition-all duration-700 rounded-3xl shadow-2xl"
-              animate={{ rotateY: isFlipped ? 180 : 0 }}
-              transition={{ duration: 0.7, ease: [0.23, 1, 0.32, 1] }}
+            <div
+              className="relative w-full h-full rounded-3xl shadow-2xl"
+              style={{ transformStyle: "preserve-3d" }}
             >
               {/* FRONT SIDE */}
-              <div className="absolute inset-0 w-full h-full backface-hidden rounded-3xl bg-gradient-to-b from-[#111420] via-[#0d101a] to-[#07080d] border border-white/15 p-6 sm:p-7 flex flex-col justify-between shadow-[0_20px_60px_-15px_rgba(0,0,0,0.8)] overflow-hidden">
+              <motion.div
+                className="absolute inset-0 w-full h-full rounded-3xl bg-gradient-to-b from-[#111420] via-[#0d101a] to-[#07080d] border border-white/15 p-6 sm:p-7 flex flex-col justify-between shadow-[0_20px_60px_-15px_rgba(0,0,0,0.8)] overflow-hidden"
+                style={{ backfaceVisibility: "hidden", WebkitBackfaceVisibility: "hidden" }}
+                animate={{ rotateY: isFlipped ? 180 : 0 }}
+                transition={{ duration: 0.7, ease: [0.23, 1, 0.32, 1] }}
+              >
                 {/* Circuit background subtle lines */}
                 <div className="absolute inset-0 bg-tech-grid opacity-30 pointer-events-none" />
                 
@@ -93,18 +98,13 @@ export function IdentityCard() {
                 <div className="relative z-10 my-4 flex-1 flex flex-col items-center justify-center">
                   <div className="relative w-44 h-44 rounded-2xl overflow-hidden border-2 border-emerald-500/40 shadow-[0_0_30px_rgba(16,185,129,0.25)] group-hover:border-emerald-400 transition-colors bg-[#080a10]">
                     <Image
-                      src="/profile-card.svg"
+                      src="/assets/profile.jpg"
                       alt="Pal Patel Profile"
                       fill
                       className="object-cover"
                       priority
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
-                    <div className="absolute bottom-2 left-2 right-2 text-center">
-                      <span className="text-[10px] font-mono tracking-widest text-emerald-400 font-semibold uppercase">
-                        VERIFIED DEV
-                      </span>
-                    </div>
                   </div>
 
                   <div className="mt-4 text-center">
@@ -128,7 +128,7 @@ export function IdentityCard() {
                       Current Focus
                     </span>
                     <span className="text-xs font-mono text-slate-300 font-medium">
-                      Distributed Web & Next.js 15
+                      Web Dev & Machine Learning
                     </span>
                   </div>
 
@@ -144,10 +144,15 @@ export function IdentityCard() {
                     <RotateCw className="w-3 h-3 text-emerald-400 transition-transform group-hover:rotate-180 duration-500" />
                   </button>
                 </div>
-              </div>
+              </motion.div>
 
               {/* BACK SIDE */}
-              <div className="absolute inset-0 w-full h-full rotate-y-180 backface-hidden rounded-3xl bg-gradient-to-b from-[#141824] via-[#0f131d] to-[#08090e] border border-emerald-500/30 p-6 sm:p-7 flex flex-col justify-between shadow-[0_20px_60px_-15px_rgba(16,185,129,0.15)] overflow-hidden">
+              <motion.div
+                className="absolute inset-0 w-full h-full rounded-3xl bg-gradient-to-b from-[#141824] via-[#0f131d] to-[#08090e] border border-emerald-500/30 p-6 sm:p-7 flex flex-col justify-between shadow-[0_20px_60px_-15px_rgba(16,185,129,0.15)] overflow-hidden"
+                style={{ backfaceVisibility: "hidden", WebkitBackfaceVisibility: "hidden" }}
+                animate={{ rotateY: isFlipped ? 0 : -180 }}
+                transition={{ duration: 0.7, ease: [0.23, 1, 0.32, 1] }}
+              >
                 <div className="absolute inset-0 bg-tech-grid opacity-20 pointer-events-none" />
 
                 {/* Back Top Header */}
@@ -168,7 +173,7 @@ export function IdentityCard() {
                   {/* Bio brief */}
                   <div>
                     <span className="text-[10px] font-mono text-slate-500 uppercase tracking-wider block mb-1">
-                      System Brief
+                      About Me
                     </span>
                     <p className="text-xs text-slate-300 leading-relaxed font-sans">
                       {profileData.bio}
@@ -179,7 +184,7 @@ export function IdentityCard() {
                   <div>
                     <span className="text-[10px] font-mono text-slate-500 uppercase tracking-wider block mb-2 flex items-center gap-1.5">
                       <Cpu className="w-3 h-3 text-emerald-400" />
-                      Core Technologies
+                      Technologies I Use
                     </span>
                     <div className="flex flex-wrap gap-1.5">
                       {techChips.map((tech) => (
@@ -193,11 +198,11 @@ export function IdentityCard() {
                     </div>
                   </div>
 
-                  {/* Telemetry info rows */}
+                  {/* Info rows */}
                   <div className="grid grid-cols-2 gap-2 pt-2 border-t border-white/10 text-xs font-mono">
                     <div>
                       <span className="text-[10px] text-slate-500 uppercase block">Specialization</span>
-                      <span className="text-slate-300 font-medium">Full-Stack & Cloud</span>
+                      <span className="text-slate-300 font-medium">Web Dev & ML</span>
                     </div>
                     <div>
                       <span className="text-[10px] text-slate-500 uppercase block">Timezone</span>
@@ -207,10 +212,10 @@ export function IdentityCard() {
                       </span>
                     </div>
                     <div className="col-span-2">
-                      <span className="text-[10px] text-slate-500 uppercase block">Education Timeline</span>
+                      <span className="text-[10px] text-slate-500 uppercase block">Education</span>
                       <span className="text-slate-300 font-medium flex items-center gap-1">
                         <Calendar className="w-3 h-3 text-emerald-400" />
-                        {profileData.education}
+                        {profileData.education} — {profileData.college}
                       </span>
                     </div>
                   </div>
@@ -220,7 +225,7 @@ export function IdentityCard() {
                 <div className="relative z-10 pt-3 border-t border-white/10 flex items-center justify-between">
                   <span className="text-[10px] font-mono text-emerald-400 flex items-center gap-1">
                     <CheckCircle2 className="w-3 h-3" />
-                    Open to Collaborations
+                    Open to Opportunities
                   </span>
 
                   <button
@@ -235,12 +240,11 @@ export function IdentityCard() {
                     <RotateCw className="w-3 h-3" />
                   </button>
                 </div>
-              </div>
-            </motion.div>
+              </motion.div>
+            </div>
           </div>
         </div>
       </div>
     </section>
   );
 }
-
